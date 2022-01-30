@@ -18,7 +18,7 @@ def help():
 		\n--- Création de projet ---
  - instru : Avoir les instruction pour créer un projet.
 		\n--- Autres ---
- - stop   : Stopper la création.""")
+ - exit   : Quitter Pyternet.""")
 
 def instru():
 	print("""\n----------------------------
