@@ -1,5 +1,5 @@
 # Pyternet fr
-(if you don't speak french, go [here](https://github.com/Babilinx/Pyternet/new/master?readme=1#pyternet-en) )
+(if you don't speak french, go [here](https://github.com/Babilinx/Pyternet/blob/main/README.md#pyternet-en) )
 
 ## Introduction
 `pyternet` est un outil simple en Python qui permettra la création de sites internet simples sur n'importe quelle platforme pouvant faire fonctionner python3+.
