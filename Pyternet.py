@@ -59,7 +59,7 @@ while True:
 	#-- CREATION DE PROJET --
 	#Commande "instru"
 	elif cmd == 'instru':
-		instru()
+		instru()        
 	#Commande "new_project"
 	elif cmd == 'new_project':
 		new_project()
