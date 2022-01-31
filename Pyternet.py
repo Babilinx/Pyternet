@@ -31,7 +31,7 @@ def instru():
 Pour créer un projet Pyternet, tapez 'new_project'
 Si vous avez déjà créé un projet Pyternet, ouvrez-le avec 'open' !""")
 
-def new_project():
+def mkproj():
 	project_name = input("Quel nom voulez-vous donner à votre projet ? \n[Pyternet/create] > ")
 	print(f"Nous créons votre projet avec le nom '{project_name}''...")
 	os.mkdir(f"{project_name}")
@@ -65,7 +65,7 @@ while True:
 	#-- CREATION DE PROJET --
 	#Commande "instru"
 	elif cmd == 'instru':
-		instru()        
+		instru()
 	#Commande "new_project"
 	elif cmd == 'mkproj':
 		new_project()
