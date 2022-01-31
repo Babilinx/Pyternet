@@ -68,7 +68,7 @@ while True:
 		instru()
 	#Commande "new_project"
 	elif cmd == 'mkproj':
-		new_project()
+		mkproj()
 	#commende pour ouvrir un projet
 	elif cmd == "open":
 		project_name = input("Nom du projet à ouvrir\n[Pyternet:open] > ")
