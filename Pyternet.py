@@ -17,6 +17,8 @@ def help():
 --------------------------------------------------------
 		\n--- Création de projet ---
  - instru : Avoir les instruction pour créer un projet.
+ - mkproj : Création d'un projet.
+ - init   : initialiser la création d'un projet (effectuer dans le dossier projet).
  		\n--- Ouvrir un projet ---
  - open   : Ouvrir un projet déjà existant
 		\n--- Autres ---
@@ -45,8 +47,12 @@ def open_project(project_name):
 		print(f"FileNotFoundError: Dossier '{project_name}' n'existe pas/syntaxe invalide")
 		pass
 
+def init():
+	html_file = open("index.html", "w")
+	css_file = open("style.css", "w")
+
 dir = ""
-#Boucle de détéction des commandes
+#Boucle de détection des commandes
 while True:
 	#Temps d'attente
 	time.sleep(1)
@@ -59,15 +65,18 @@ while True:
 	#-- CREATION DE PROJET --
 	#Commande "instru"
 	elif cmd == 'instru':
-		instru()
+		instru()        
 	#Commande "new_project"
-	elif cmd == 'new_project':
+	elif cmd == 'mkproj':
 		new_project()
 	#commende pour ouvrir un projet
 	elif cmd == "open":
-		project_name = input("Nom du projet à ouvrir\n[Pyternet/open] > ")
+		project_name = input("Nom du projet à ouvrir\n[Pyternet:open] > ")
 		open_project(project_name)
 		dir = project_name
+	#commende pour initialiser un projet
+	elif cmd == "init":
+		init()
 
 	#-- AUTRES --
 	#Quitter la Boucle
