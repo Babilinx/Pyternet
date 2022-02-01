@@ -22,7 +22,7 @@ def help():
  		\n--- Ouvrir un projet ---
  - open   : Ouvrir un projet déjà existant
 		\n--- Autres ---
- - cd     : Changer de répertoire.
+ - cd     : Changer de répertoire ('..' pour revenir en arrière).
  - mkdir  : Créer un dossier.
  - exit   : Quitter Pyternet.""")
 
@@ -37,7 +37,7 @@ Si vous avez déjà créé un projet Pyternet, ouvrez-le avec 'open' !""")
 
 def mkproj():
     project_name = input(
-        f"Quel nom voulez-vous donner à votre projet ? \n[Pyternet", + "/".join(dir), + "] > ")
+        "Quel nom voulez-vous donner à votre projet ? \n[Pyternet{}] > ".format("/".join(dir)))
     print(f"Nous créons votre projet avec le nom '{project_name}'...")
     os.mkdir(f"{project_name}")
     time.sleep(1)
@@ -65,10 +65,10 @@ def init():
 dir = [""]
 # Boucle de détection des commandes
 while True:
-      # Temps d'attente
+    # Temps d'attente
     time.sleep(1)
     # Demande de commande
-    cmd = input("\n[Pyternet", + "/".join(dir), + "] > ")
+    cmd = input("\n[Pyternet{}] > ".format("/".join(dir)))
 
     # Commande "cmds"
     if cmd == 'help':
@@ -82,7 +82,7 @@ while True:
         mkproj()
     # commende pour ouvrir un projet
     elif cmd == "open":
-        project_name = input(f"Nom du projet à ouvrir :\n[Pyternet", + "/".join(dir), + "] > ")
+        project_name = input("Nom du projet à ouvrir :\n[Pyternet{}] > ".format("/".join(dir)))
         open_project(project_name)
         dir.append(project_name)
     # commende pour initialiser un projet
@@ -92,7 +92,7 @@ while True:
     # -- AUTRES --
     # Se déplacer
     elif cmd == "cd":
-        chdir = input("\n[Pyternet", + "/".join(dir), + "] > ")
+        chdir = input("\n[Pyternet{}:cd] > ".format("/".join(dir)))
         try:
             os.chdir(chdir)
             # Reculer d'un dossier
@@ -104,8 +104,9 @@ while True:
             print(f"Error: {chdir} do not exists.")
             pass
     # Créer un nouveau dossier
-    mkdir = input("\n[Pyternet", + "/".join(dir), + "] > ")
-       try:
+    elif cmd == "mkdir":
+        mkdir = input("\n[Pyternet{}:mkdir] > ".format("/".join(dir)))
+        try:
             os.mkdir(mkdir)
         except FileExistsError:
             print(f"Error: '{mkdir}' exists")
@@ -116,4 +117,5 @@ while True:
 
     # Erreur
     else:
+
         print(f"Oups... Nous n'avons pas trouvé la commande '{cmd}'. Réessayez !")
