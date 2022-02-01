@@ -31,13 +31,12 @@ def instru():
     print("""\n--------------------------------------------------------
 	VOICI LES INSTRUCTIONS
 --------------------------------------------------------
-Pour créer un projet Pyternet, tapez 'new_project'
+Pour créer un projet Pyternet, tapez 'mkproj'
 Si vous avez déjà créé un projet Pyternet, ouvrez-le avec 'open' !""")
 
 
 def mkproj():
-    project_name = input(
-        "Quel nom voulez-vous donner à votre projet ? \n[Pyternet{}] > ".format("/".join(dir)))
+    project_name = input("Quel nom voulez-vous donner à votre projet ? \n[Pyternet{}] > ".format("/".join(dir)))
     print(f"Nous créons votre projet avec le nom '{project_name}'...")
     os.mkdir(f"{project_name}")
     time.sleep(1)
