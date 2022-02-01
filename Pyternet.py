@@ -16,7 +16,7 @@ def help():
 	VOICI LES COMMANDES
 --------------------------------------------------------
 		\n--- Création de projet ---
- - instru       : Avoir les instruction pour créer un projet.
+ - tools        : Avoir les instruction pour créer un projet.
  - mkproj <nom> : Création d'un projet.
  - init         : initialiser la création d'un projet (effectuer dans le dossier projet).
  		\n--- Ouvrir un projet ---
@@ -27,7 +27,7 @@ def help():
  - exit         : Quitter Pyternet.""")
 
 
-def instru():
+def tools():
     print("""\n--------------------------------------------------------
 	VOICI LES INSTRUCTIONS
 --------------------------------------------------------
@@ -65,7 +65,7 @@ dir = [""]
 # Boucle de détection des commandes
 while True:
     # Temps d'attente
-    time.sleep(1)
+    time.sleep(0.2)
     # Demande de commande
     cmd = input("\n[Pyternet{}] > ".format("/".join(dir)))
     # Test d'argument
@@ -74,15 +74,15 @@ while True:
     except ValueError:
         pass
 
-    # Commande "cmds"
-    if cmd == 'help':
+    # Message d'aide
+    if cmd == "help":
         help()
     # -- CREATION DE PROJET --
-    # Commande "instru"
-    elif cmd == 'instru':
-        instru()
+    # Message d'affichage des outils
+    elif cmd == "tools":
+        tools()
     # Commande "new_project"
-    elif cmd == 'mkproj':
+    elif cmd == "mkproj":
         mkproj(para)
     # commende pour ouvrir un projet
     elif cmd == "open":
@@ -112,7 +112,7 @@ while True:
             print(f"Error: '{para}' exists")
             pass
     # Quitter la Boucle
-    elif cmd == 'exit':
+    elif cmd == "exit":
         break
 
     # Erreur
