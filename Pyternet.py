@@ -34,7 +34,7 @@ Pour créer un projet Pyternet, tapez 'new_project'
 Si vous avez déjà créé un projet Pyternet, ouvrez-le avec 'open' !""")
 
 def mkproj():
-	project_name = input(f"Quel nom voulez-vous donner à votre projet ? \n[Pyternet/{dir}:create] > ")
+	project_name = input(f"Quel nom voulez-vous donner à votre projet ? \n[Pyternet", + "/".join(dir), + "] > ")
 	print(f"Nous créons votre projet avec le nom '{project_name}'...")
 	os.mkdir(f"{project_name}")
 	time.sleep(1)
@@ -56,13 +56,13 @@ def init():
 	css_file = open("style.css", "w")
 	print("Terminé !")
 
-dir = ""
+dir = [""]
 #Boucle de détection des commandes
 while True:
 	#Temps d'attente
 	time.sleep(1)
 	#Demande de commande
-	cmd = input(f"\n[Pyternet{dir}] > ")
+	cmd = input("\n[Pyternet", + "/".join(dir), + "] > ")
 
 	#Commande "cmds"
 	if cmd == 'help':
@@ -76,9 +76,9 @@ while True:
 		mkproj()
 	#commende pour ouvrir un projet
 	elif cmd == "open":
-		project_name = input("Nom du projet à ouvrir\n[Pyternet:open] > ")
+		project_name = input(f"Nom du projet à ouvrir :\n[Pyternet", + "/".join(dir), + "] > ")
 		open_project(project_name)
-		dir = f"/{project_name}"
+		dir.append(project_name)
 	#commende pour initialiser un projet
 	elif cmd == "init":
 		init()
@@ -86,16 +86,19 @@ while True:
 	#-- AUTRES --
 	#Se déplacer
 	elif cmd == "cd":
-		chdir = input(f"\n[Pyternet{dir}:cd] > ")
-		try:
+		chdir = input("\n[Pyternet", + "/".join(dir), + "] > ")
+		try: 
 			os.chdir(chdir)
-			dir += f"/{chdir}"
+			#Reculer d'un dossier
+			if chdir == "..":
+				dir.pop()
+			else:
+				dir.append(chdir)
 		except FileNotFoundError:
 			print(f"Error: {chdir} do not exists.")
 			pass
-	#Créer un nouveau Dossier
-	elif cmd == "mkdir":
-		mkdir = input(f"\n[Pyternet{dir}:mkdir] > ")
+	#Créer un nouveau dossier
+	mkdir = input("\n[Pyternet", + "/".join(dir), + "] > ")
 		try: os.mkdir(mkdir)
 		except FileExistsError:
 			print(f"Error: '{mkdir}' exists")
