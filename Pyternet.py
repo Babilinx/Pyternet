@@ -16,15 +16,15 @@ def help():
 	VOICI LES COMMANDES
 --------------------------------------------------------
 		\n--- Création de projet ---
- - instru : Avoir les instruction pour créer un projet.
- - mkproj : Création d'un projet.
- - init   : initialiser la création d'un projet (effectuer dans le dossier projet).
+ - instru       : Avoir les instruction pour créer un projet.
+ - mkproj <nom> : Création d'un projet.
+ - init         : initialiser la création d'un projet (effectuer dans le dossier projet).
  		\n--- Ouvrir un projet ---
- - open   : Ouvrir un projet déjà existant
+ - open <nom>   : Ouvrir un projet déjà existant
 		\n--- Autres ---
- - cd     : Changer de répertoire ('..' pour revenir en arrière).
- - mkdir  : Créer un dossier.
- - exit   : Quitter Pyternet.""")
+ - cd <dir>     : Changer de répertoire ('..' pour revenir en arrière).
+ - mkdir <dir>  : Créer un dossier.
+ - exit         : Quitter Pyternet.""")
 
 
 def instru():
@@ -35,9 +35,7 @@ Pour créer un projet Pyternet, tapez 'new_project'
 Si vous avez déjà créé un projet Pyternet, ouvrez-le avec 'open' !""")
 
 
-def mkproj():
-    project_name = input(
-        "Quel nom voulez-vous donner à votre projet ? \n[Pyternet{}] > ".format("/".join(dir)))
+def mkproj(project_name):
     print(f"Nous créons votre projet avec le nom '{project_name}'...")
     os.mkdir(f"{project_name}")
     time.sleep(1)
@@ -49,6 +47,7 @@ def open_project(project_name):
     try:
         os.chdir(project_name)
         print(f"Projet {project_name} prêt à être utilisé !")
+        dir.append(project_name)
     except FileNotFoundError:
         print(f"FileNotFoundError: Dossier '{project_name}' n'existe pas/syntaxe invalide")
         pass
@@ -69,6 +68,11 @@ while True:
     time.sleep(1)
     # Demande de commande
     cmd = input("\n[Pyternet{}] > ".format("/".join(dir)))
+    # Test d'argument
+    try:
+        cmd, para = cmd.split()
+    except ValueError:
+        pass
 
     # Commande "cmds"
     if cmd == 'help':
@@ -79,12 +83,10 @@ while True:
         instru()
     # Commande "new_project"
     elif cmd == 'mkproj':
-        mkproj()
+        mkproj(para)
     # commende pour ouvrir un projet
     elif cmd == "open":
-        project_name = input("Nom du projet à ouvrir :\n[Pyternet{}] > ".format("/".join(dir)))
-        open_project(project_name)
-        dir.append(project_name)
+        open_project(para)
     # commende pour initialiser un projet
     elif cmd == "init":
         init()
@@ -92,24 +94,22 @@ while True:
     # -- AUTRES --
     # Se déplacer
     elif cmd == "cd":
-        chdir = input("\n[Pyternet{}:cd] > ".format("/".join(dir)))
         try:
-            os.chdir(chdir)
+            os.chdir(para)
             # Reculer d'un dossier
-            if chdir == "..":
+            if para == "..":
                 dir.pop()
             else:
-                dir.append(chdir)
+                dir.append(para)
         except FileNotFoundError:
-            print(f"Error: {chdir} do not exists.")
+            print(f"Error: {para} do not exists.")
             pass
     # Créer un nouveau dossier
     elif cmd == "mkdir":
-        mkdir = input("\n[Pyternet{}:mkdir] > ".format("/".join(dir)))
         try:
-            os.mkdir(mkdir)
+            os.mkdir(para)
         except FileExistsError:
-            print(f"Error: '{mkdir}' exists")
+            print(f"Error: '{para}' exists")
             pass
     # Quitter la Boucle
     elif cmd == 'exit':
