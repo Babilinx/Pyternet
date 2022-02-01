@@ -117,5 +117,4 @@ while True:
 
     # Erreur
     else:
-
         print(f"Oups... Nous n'avons pas trouvé la commande '{cmd}'. Réessayez !")
