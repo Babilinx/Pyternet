@@ -39,3 +39,8 @@ We are a group of people who decide to create `pyternet`
 Of course ! We have a [discord server](https://discord.gg/surb6DuAgW).
 ### Can I participate to the project ?
 Yes you can ! just go on our [discord](https://discord.gg/surb6DuAgW).
+
+# Pyternet mobile fr
+
+## Introduction
+`Pyternet mobile` est un projet lancé par l'équipe de Pyternet pour offrir aux personne n'ayant pas d'accès à Pyternet d'en avoir un.
