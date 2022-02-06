@@ -61,62 +61,67 @@ def init():
     print("Terminé !")
 
 
-dir = [""]
-# Boucle de détection des commandes
-while True:
-    # Temps d'attente
-    time.sleep(0.2)
-    # Demande de commande
-    cmd = input("\n[Pyternet{}] > ".format("/".join(dir)))
-    # Test d'argument
-    match cmd.split():
-    # try:
-    #     cmd, para = cmd.split()
-    # except ValueError:
-    #     pass
+def main():
+    dir = [""]
+    # Boucle de détection des commandes
+    while True:
+        # Temps d'attente
+        time.sleep(0.2)
+        # Demande de commande
+        cmd = input("\n[Pyternet{}] > ".format("/".join(dir)))
+        # Test d'argument
+        match cmd.split():
+        # try:
+        #     cmd, para = cmd.split()
+        # except ValueError:
+        #     pass
 
-        # Message d'aide
-        case ["help"]:
-            help()
-        # -- CREATION DE PROJET --
-        # Message d'affichage des outils
-        case ["tools"]:
-            tools()
-        # Commande "new_project"
-        case ["mkproj", project_name]:
-            mkproj(project_name)
-        # commende pour ouvrir un projet
-        case ["open", project_name]:
-            open_project(project_name)
-        # commende pour initialiser un projet
-        case ["init"]:
-            init()
+            # Message d'aide
+            case ["help"]:
+                help()
+            # -- CREATION DE PROJET --
+            # Message d'affichage des outils
+            case ["tools"]:
+                tools()
+            # Commande "new_project"
+            case ["mkproj", project_name]:
+                mkproj(project_name)
+            # commende pour ouvrir un projet
+            case ["open", project_name]:
+                open_project(project_name)
+            # commende pour initialiser un projet
+            case ["init"]:
+                init()
 
-        # -- AUTRES --
-        # Se déplacer
-        case ["cd", cdir]:
-            try:
-                os.chdir(cdir)
-                # Reculer d'un dossier
-                if cdir == "..":
-                    dir.pop()
-                else:
-                    dir.append(cdir)
-            except FileNotFoundError:
-                print(f"Error: {cdir} do not exists.")
-                pass
-        # Créer un nouveau dossier
-        case ["mkdir", cdir]:
-            try:
-                os.mkdir(cdir)
-            except FileExistsError:
-                print(f"Error: '{cdir}' exists")
-                pass
-        # Quitter la Boucle
-        case ["exit"]:
-            print("Merci d'avoir utilisé Pyternet !")
-            break
+            # -- AUTRES --
+            # Se déplacer
+            case ["cd", cdir]:
+                try:
+                    os.chdir(cdir)
+                    # Reculer d'un dossier
+                    if cdir == "..":
+                        dir.pop()
+                    else:
+                        dir.append(cdir)
+                except FileNotFoundError:
+                    print(f"Error: {cdir} do not exists.")
+                    pass
+            # Créer un nouveau dossier
+            case ["mkdir", cdir]:
+                try:
+                    os.mkdir(cdir)
+                except FileExistsError:
+                    print(f"Error: '{cdir}' exists")
+                    pass
+            # Quitter la Boucle
+            case ["exit"]:
+                print("Merci d'avoir utilisé Pyternet !")
+                break
 
-        # Erreur
-        case _:
-            print(f"Oups... Nous n'avons pas trouvé la commande. Réessayez !")
+            # Erreur
+            case _:
+                print(f"Oups... Nous n'avons pas trouvé la commande. Réessayez !")
+
+
+if __name__ == '__main__':
+    main()
