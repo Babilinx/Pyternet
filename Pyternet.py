@@ -31,7 +31,7 @@ def tools():
     print("""\n--------------------------------------------------------
 	VOICI LES INSTRUCTIONS
 --------------------------------------------------------
-Pour créer un projet Pyternet, tapez 'new_project'
+Pour créer un projet Pyternet, tapez 'mkproj'
 Si vous avez déjà créé un projet Pyternet, ouvrez-le avec 'open' !""")
 
 
