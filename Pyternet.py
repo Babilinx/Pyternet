@@ -69,52 +69,54 @@ while True:
     # Demande de commande
     cmd = input("\n[Pyternet{}] > ".format("/".join(dir)))
     # Test d'argument
-    try:
-        cmd, para = cmd.split()
-    except ValueError:
-        pass
+    match cmd.split():
+    # try:
+    #     cmd, para = cmd.split()
+    # except ValueError:
+    #     pass
 
-    # Message d'aide
-    if cmd == "help":
-        help()
-    # -- CREATION DE PROJET --
-    # Message d'affichage des outils
-    elif cmd == "tools":
-        tools()
-    # Commande "new_project"
-    elif cmd == "mkproj":
-        mkproj(para)
-    # commende pour ouvrir un projet
-    elif cmd == "open":
-        open_project(para)
-    # commende pour initialiser un projet
-    elif cmd == "init":
-        init()
+        # Message d'aide
+        case ["help"]:
+            help()
+        # -- CREATION DE PROJET --
+        # Message d'affichage des outils
+        case ["tools"]:
+            tools()
+        # Commande "new_project"
+        case ["mkproj", project_name]:
+            mkproj(project_name)
+        # commende pour ouvrir un projet
+        case ["open", project_name]:
+            open_project(project_name)
+        # commende pour initialiser un projet
+        case ["init"]:
+            init()
 
-    # -- AUTRES --
-    # Se déplacer
-    elif cmd == "cd":
-        try:
-            os.chdir(para)
-            # Reculer d'un dossier
-            if para == "..":
-                dir.pop()
-            else:
-                dir.append(para)
-        except FileNotFoundError:
-            print(f"Error: {para} do not exists.")
-            pass
-    # Créer un nouveau dossier
-    elif cmd == "mkdir":
-        try:
-            os.mkdir(para)
-        except FileExistsError:
-            print(f"Error: '{para}' exists")
-            pass
-    # Quitter la Boucle
-    elif cmd == "exit":
-        break
+        # -- AUTRES --
+        # Se déplacer
+        case ["cd", cdir]:
+            try:
+                os.chdir(cdir)
+                # Reculer d'un dossier
+                if cdir == "..":
+                    dir.pop()
+                else:
+                    dir.append(cdir)
+            except FileNotFoundError:
+                print(f"Error: {cdir} do not exists.")
+                pass
+        # Créer un nouveau dossier
+        case ["mkdir", cdir]:
+            try:
+                os.mkdir(cdir)
+            except FileExistsError:
+                print(f"Error: '{cdir}' exists")
+                pass
+        # Quitter la Boucle
+        case ["exit"]:
+            print("Merci d'avoir utilisé Pyternet !")
+            break
 
-    # Erreur
-    else:
-        print(f"Oups... Nous n'avons pas trouvé la commande '{cmd}'. Réessayez !")
+        # Erreur
+        case _:
+            print(f"Oups... Nous n'avons pas trouvé la commande. Réessayez !")
