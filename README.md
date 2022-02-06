@@ -2,7 +2,7 @@
 (if you don't speak french, go [here](https://github.com/Babilinx/Pyternet/blob/main/README.md#pyternet-en) )
 
 ## Introduction
-`pyternet` est un outil simple en Python qui permettra la création de sites internet simples sur n'importe quelle platforme pouvant faire fonctionner python3+.
+`pyternet` est un outil simple en Python qui permettra la création de sites internet simples sur n'importe quelle platforme pouvant faire fonctionner python3.10.
 Nous ne sommes que des débutants dans tout ceci mais nous pensons qu'avec du temps et de la détermination, nous arriverons au bout de ce projet.
 
 ## Fonctionalités
@@ -23,7 +23,7 @@ Oui bien sûr ! Pour cela rendez-vous dans notre [discord](https://discord.gg/su
 # Pyternet en
 
 ## Introduction
-`pyternet` is a simple python tool who will can create simple websites on any platfom with python3+ on it.
+`pyternet` is a simple python tool who will can create simple websites on any platfom with python3.10 on it.
 We are only begginers, but we trink we can do it with time and determination.
 
 ## Fonctionalites
