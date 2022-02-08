@@ -16,18 +16,18 @@ def help():
 	VOICI LES COMMANDES
 --------------------------------------------------------
 		\n--- Création de projet ---
- - instru : Avoir les instruction pour créer un projet.
- - mkproj : Création d'un projet.
- - init   : initialiser la création d'un projet (effectuer dans le dossier projet).
+ - tools        : Avoir les instruction pour créer un projet.
+ - mkproj <nom> : Création d'un projet.
+ - init         : initialiser la création d'un projet (effectuer dans le dossier projet).
  		\n--- Ouvrir un projet ---
- - open   : Ouvrir un projet déjà existant
+ - open <nom>   : Ouvrir un projet déjà existant
 		\n--- Autres ---
- - cd     : Changer de répertoire ('..' pour revenir en arrière).
- - mkdir  : Créer un dossier.
- - exit   : Quitter Pyternet.""")
+ - cd <dir>     : Changer de répertoire ('..' pour revenir en arrière).
+ - mkdir <dir>  : Créer un dossier.
+ - exit         : Quitter Pyternet.""")
 
 
-def instru():
+def tools():
     print("""\n--------------------------------------------------------
 	VOICI LES INSTRUCTIONS
 --------------------------------------------------------
@@ -35,8 +35,7 @@ Pour créer un projet Pyternet, tapez 'mkproj'
 Si vous avez déjà créé un projet Pyternet, ouvrez-le avec 'open' !""")
 
 
-def mkproj():
-    project_name = input("Quel nom voulez-vous donner à votre projet ? \n[Pyternet{}] > ".format("/".join(dir)))
+def mkproj(project_name):
     print(f"Nous créons votre projet avec le nom '{project_name}'...")
     os.mkdir(f"{project_name}")
     time.sleep(1)
@@ -48,6 +47,7 @@ def open_project(project_name):
     try:
         os.chdir(project_name)
         print(f"Projet {project_name} prêt à être utilisé !")
+        dir.append(project_name)
     except FileNotFoundError:
         print(f"FileNotFoundError: Dossier '{project_name}' n'existe pas/syntaxe invalide")
         pass
@@ -61,59 +61,67 @@ def init():
     print("Terminé !")
 
 
-dir = [""]
-# Boucle de détection des commandes
-while True:
-    # Temps d'attente
-    time.sleep(1)
-    # Demande de commande
-    cmd = input("\n[Pyternet{}] > ".format("/".join(dir)))
+def main():
+    dir = [""]
+    # Boucle de détection des commandes
+    while True:
+        # Temps d'attente
+        time.sleep(0.2)
+        # Demande de commande
+        cmd = input("\n[Pyternet{}] > ".format("/".join(dir)))
+        # Test d'argument
+        match cmd.split():
+        # try:
+        #     cmd, para = cmd.split()
+        # except ValueError:
+        #     pass
 
-    # Commande "cmds"
-    if cmd == 'help':
-        help()
-    # -- CREATION DE PROJET --
-    # Commande "instru"
-    elif cmd == 'instru':
-        instru()
-    # Commande "new_project"
-    elif cmd == 'mkproj':
-        mkproj()
-    # commende pour ouvrir un projet
-    elif cmd == "open":
-        project_name = input("Nom du projet à ouvrir :\n[Pyternet{}] > ".format("/".join(dir)))
-        open_project(project_name)
-        dir.append(project_name)
-    # commende pour initialiser un projet
-    elif cmd == "init":
-        init()
+            # Message d'aide
+            case ["help"]:
+                help()
+            # -- CREATION DE PROJET --
+            # Message d'affichage des outils
+            case ["tools"]:
+                tools()
+            # Commande "new_project"
+            case ["mkproj", project_name]:
+                mkproj(project_name)
+            # commende pour ouvrir un projet
+            case ["open", project_name]:
+                open_project(project_name)
+            # commende pour initialiser un projet
+            case ["init"]:
+                init()
 
-    # -- AUTRES --
-    # Se déplacer
-    elif cmd == "cd":
-        chdir = input("\n[Pyternet{}:cd] > ".format("/".join(dir)))
-        try:
-            os.chdir(chdir)
-            # Reculer d'un dossier
-            if chdir == "..":
-                dir.pop()
-            else:
-                dir.append(chdir)
-        except FileNotFoundError:
-            print(f"Error: {chdir} do not exists.")
-            pass
-    # Créer un nouveau dossier
-    elif cmd == "mkdir":
-        mkdir = input("\n[Pyternet{}:mkdir] > ".format("/".join(dir)))
-        try:
-            os.mkdir(mkdir)
-        except FileExistsError:
-            print(f"Error: '{mkdir}' exists")
-            pass
-    # Quitter la Boucle
-    elif cmd == 'exit':
-        break
+            # -- AUTRES --
+            # Se déplacer
+            case ["cd", cdir]:
+                try:
+                    os.chdir(cdir)
+                    # Reculer d'un dossier
+                    if cdir == "..":
+                        dir.pop()
+                    else:
+                        dir.append(cdir)
+                except FileNotFoundError:
+                    print(f"Error: {cdir} do not exists.")
+                    pass
+            # Créer un nouveau dossier
+            case ["mkdir", cdir]:
+                try:
+                    os.mkdir(cdir)
+                except FileExistsError:
+                    print(f"Error: '{cdir}' exists")
+                    pass
+            # Quitter la Boucle
+            case ["exit"]:
+                print("Merci d'avoir utilisé Pyternet !")
+                break
 
-    # Erreur
-    else:
-        print(f"Oups... Nous n'avons pas trouvé la commande '{cmd}'. Réessayez !")
+            # Erreur
+            case _:
+                print(f"Oups... Nous n'avons pas trouvé la commande. Réessayez !")
+
+
+if __name__ == '__main__':
+    main()
