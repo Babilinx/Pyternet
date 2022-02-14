@@ -44,3 +44,13 @@ Yes you can ! just go on our [discord](https://discord.gg/surb6DuAgW).
 
 ## Introduction
 `Pyternet mobile` est un projet lancé par l'équipe de Pyternet pour offrir aux personne n'ayant pas d'accès à Pyternet d'en avoir un.
+
+## 1 Intallation
+ - Installer `termux` sur votre appareil mobile. `termux` est une application mobile qui simule un terminal.
+ ### Python
+  - Installer `python` sur `termux` en éxécutant la commande `apt install python3`.
+  - Vérifier que a version de `python` est `3.10` ou utérieur, sinon éxécuter `apt update python3`. 
+ ### Pyternet
+  - `git clone ` (si vous avez une erreur vous indiquant que `git` n'est pas installé, éxécutez `apt install git`
+## 2 Utilisation
+Pyternet s'utilise de la même manière que se soit sur mobile ou sur ordinateur.
