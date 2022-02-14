@@ -11,6 +11,21 @@ Nous ne sommes que des débutants dans tout ceci mais nous pensons qu'avec du te
 ## Usage
 `soon`
 
+## Installation
+ ### Pour GNU/Linux (avec `apt`)
+  ### Python 3.10+
+   - `sudo apt install python3` ou `sudo apt update python3` pour mettre à jour vers la version 3.10
+  ### Pyternet
+   - `sudo apt install git` si vous n'avez pas `git` d'installé
+   - `git clone https://github.com/Babilinx/Pyternet.git`
+ ### Pour Windows
+  ### Python 3.10+
+   - Aller sur le Windows store et chercher `python` et installer la dernière version disponible
+  ### Pyternet
+   - Installer [git](https://git-scm.com/downloads) si vous ne l'avez pas d'installé
+   - Démarrer l'invité de commandes en cherchant `cmd` dans le menu Windows
+   - `git clone https://github.com/Babilinx/Pyternet.git`
+
 
 # FAQ
 ### Qui sommes-nous ?
@@ -45,12 +60,12 @@ Yes you can ! just go on our [discord](https://discord.gg/surb6DuAgW).
 ## Introduction
 `Pyternet mobile` est un projet lancé par l'équipe de Pyternet pour offrir aux personne n'ayant pas d'accès à Pyternet d'en avoir un.
 
-## 1 Intallation
+## Installation
  - Installer `termux` sur votre appareil mobile. `termux` est une application mobile qui simule un terminal.
- ### Python
+ ### Python 3.10+
   - Installer `python` sur `termux` en éxécutant la commande `apt install python3`.
   - Vérifier que a version de `python` est `3.10` ou utérieur, sinon éxécuter `apt update python3`. 
  ### Pyternet
-  - `git clone ` (si vous avez une erreur vous indiquant que `git` n'est pas installé, éxécutez `apt install git`
-## 2 Utilisation
+  - `git clone https://github.com/Babilinx/Pyternet.git` (si vous avez une erreur vous indiquant que `git` n'est pas installé, éxécutez `apt install git`
+## Usage
 Pyternet s'utilise de la même manière que se soit sur mobile ou sur ordinateur.
